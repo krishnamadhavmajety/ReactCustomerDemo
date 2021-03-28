@@ -1,23 +1,21 @@
 import {FaTimes} from 'react-icons/fa'
- import { FaPencilAlt } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
 
-const Customer = ({customer, onDelete, onEdit}) => {
+const Customer = (props)=>{
     return(
-        <div className='task reminder' >            
-            <h3>{customer.name}
-
-            {/* Edit */}
-            <FaPencilAlt style={{color:'red', cursor:'pointer'}} 
-             onClick={() => onEdit(customer.id)}   />
-             
-             {/* Delete */}
-             <FaTimes style={{color:'red', cursor:'pointer'}} 
-             onClick={() => onDelete(customer.id)}  />
-
-</h3>
-            <p>{customer.location}</p>
+        <div className="card-box" style={ {border: '1px solid rgba(0, 0, 0, 0.05)'} } >
+            <p className = "id"><b>ID : </b>  { props.customer.id }</p>
+            <p className = "name"><b>Customer Name :</b> { props.customer.name }</p>
+            <p className = "loc"><b>Customer Location :</b> { props.customer.location }</p>            
+                <FaTimes style = {{ color:'#007bff', cursor:'pointer'}} 
+                    onClick={()=> props.deleteCus(props.customer.id)}
+                />
+                <FaPencilAlt style = {{ color:'#007bff', cursor:'pointer'}} 
+                    onClick={()=> props.editButtonClicked(props.customer.id)}
+                />
+            
         </div>
     )
 }
 
-export default Customer
+export default Customer;
